@@ -19,12 +19,20 @@ public class DoorSubsystem extends SubsystemBase {
     doorMotor.configVoltageCompSaturation(DoorConstants.doorMotorVoltage);
     doorMotor.enableVoltageCompensation(true);
     doorMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
-    doorMotor.configForwardSoftLimitThreshold(1000, 0); //TODO test raw sensor units for correct soft limit
-    doorMotor.configReverseSoftLimitThreshold(-10, 0); //TODO test raw sensor units for correct soft limit
+    doorMotor.configForwardSoftLimitThreshold(DoorConstants.forwardSoftLimit); //TODO test raw sensor units for correct soft limit
+    doorMotor.configReverseSoftLimitThreshold(DoorConstants.reverseSoftLimit); //TODO test raw sensor units for correct soft limit
   }
 
   public void moveDoor(double speed) {
     doorMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public void stopDoor() {
+    doorMotor.set(ControlMode.PercentOutput, 0);
+  }
+
+  public double getEncoderPosition(){
+    return doorMotor.getSelectedSensorPosition();
   }
 
   @Override
