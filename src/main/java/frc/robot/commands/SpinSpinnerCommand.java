@@ -17,7 +17,7 @@ public class SpinSpinnerCommand extends CommandBase {
 
   @Override
   public void execute() {
-    spinner.spin(1);
+    spinner.spin(.3);
   }
 
   @Override
