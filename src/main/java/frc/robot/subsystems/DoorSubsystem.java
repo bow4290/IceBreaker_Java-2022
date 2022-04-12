@@ -35,6 +35,10 @@ public class DoorSubsystem extends SubsystemBase {
     return doorMotor.getSelectedSensorPosition();
   }
 
+  public void resetEncoder(){
+    doorMotor.setSelectedSensorPosition(0);
+  }
+
   @Override
   public void periodic() {
   }

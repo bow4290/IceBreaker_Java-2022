@@ -20,7 +20,7 @@ public class RobotContainer {
 
   private SpinnerSubsystem spinnerSubsystem;
   private DrivetrainSubsystem drivetrainSubsystem;
-  private DoorSubsystem doorSubsystem;
+  public DoorSubsystem doorSubsystem;
 
   public RobotContainer() {
     xboxController = new Joystick(ControllerConstants.ControllerPort);
@@ -36,8 +36,8 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     toggleJoystickButton(xboxController, 1, new SpinSpinnerCommand(spinnerSubsystem));
-    //setJoystickButtonWhenPressed(xboxController, 5, new CloseDoorCommand(doorSubsystem));
-    //setJoystickButtonWhenPressed(xboxController, 6, new OpenDoorCommand(doorSubsystem));
+    setJoystickButtonWhenPressed(xboxController, 5, new CloseDoorCommand(doorSubsystem));
+    setJoystickButtonWhenPressed(xboxController, 6, new OpenDoorCommand(doorSubsystem));
   }
 
   public Command getAutonomousCommand() {

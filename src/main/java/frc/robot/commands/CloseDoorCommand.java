@@ -13,17 +13,13 @@ public class CloseDoorCommand extends CommandBase {
   }
 
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   @Override
   public void execute() {
     doorSubsystem.getEncoderPosition();
-
-    if (doorSubsystem.getEncoderPosition() >= DoorConstants.reverseSoftLimit) {
-      doorSubsystem.stopDoor();
-    } else {
-      doorSubsystem.moveDoor(-.2);
-    }
+    doorSubsystem.moveDoor(-0.2);
   }
 
   @Override
@@ -33,6 +29,6 @@ public class CloseDoorCommand extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    return false;
+    return (doorSubsystem.getEncoderPosition() <= DoorConstants.reverseSoftLimit);
   }
 }

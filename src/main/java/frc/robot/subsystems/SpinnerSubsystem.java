@@ -19,7 +19,7 @@ public class SpinnerSubsystem extends SubsystemBase {
   }
 
   public void stopSpin(){
-    spin(0);
+    spin(0.0);
   }
 
   @Override
